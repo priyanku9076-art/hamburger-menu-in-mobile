@@ -1,0 +1,253 @@
+
+/* CSS Variables */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --text-dark: #222;
+    --text-muted: #666;
+    --bg-color: #f8f9fa;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+}
+
+/* ================= NAVBAR (Desktop View) ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 4vw;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3vw;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #444;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Hide Mobile Menu Wrapper on Desktop */
+.mobile-menu-wrapper {
+    display: none;
+}
+
+/* ================= HERO SECTION (Desktop View) ================= */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 90vh;
+    padding: 0 5vw;
+}
+
+.hero-left {
+    flex: 1;
+    padding-right: 3vw;
+}
+
+.hero-left h1 {
+    font-size: 2.8rem;
+    color: var(--text-dark);
+    margin-bottom: 3vh;
+    line-height: 1.2;
+}
+
+.hero-left p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 4vh;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1.5vh 2.5vw;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.hero-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-right img {
+    max-width: 100%;
+    height: auto;
+    max-height: 60vh;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= MEDIA QUERIES FOR TABLET (max-width: 1024px) ================= */
+@media screen and (max-width: 1024px) {
+    .logo, .user-name {
+        font-size: 1.2rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .hero-left h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-left p {
+        font-size: 1rem;
+    }
+
+    .hero-right img {
+        max-height: 50vh;
+    }
+}
+
+/* ================= MEDIA QUERIES FOR MOBILE (max-width: 768px) ================= */
+@media screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        height: auto;
+    }
+
+    .navbar {
+        height: 8vh;
+        padding: 0 5vw;
+    }
+
+    /* Hide desktop links on mobile */
+    .desktop-links {
+        display: none;
+    }
+
+    /* Show mobile menu structure */
+    .mobile-menu-wrapper {
+        display: block;
+        position: relative;
+    }
+
+    /* Style the Hamburger Button */
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .hamburger-btn span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-dark);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* 3. Menu List Positioned on the Right Side of the Screen */
+    .mobile-dropdown {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: calc(8vh + 10px);
+        right: 0;
+        width: 200px; /* Fixed compact width on the right */
+        background-color: #bbcfdd;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: #718ea2;
+        padding: 15px 0;
+        z-index: 1000;
+        border: 1px solid #eaeaea;
+    }
+
+    .mobile-dropdown a {
+        padding: 10px 20px;
+        color: var(--text-dark);
+        text-align: left;
+        font-size: 0.95rem;
+    }
+
+    .mobile-dropdown a:hover {
+        background-color: #91a1cd;
+        color: var(--primary-color);
+    }
+
+    /* 2. Use :focus pseudo-class on the button to reveal the sibling menu */
+    .hamburger-btn:focus + .mobile-dropdown {
+        display: flex;
+    }
+
+    /* Optional: Animate hamburger bars to an 'X' when focused */
+    .hamburger-btn:focus span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+
+    .hamburger-btn:focus span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-btn:focus span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+}
